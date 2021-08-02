@@ -1,8 +1,7 @@
 <template>
   <div>
     <input type="file" ref="doc" id="doc" @change="onFileInput" />
-    <button @click="trigger">trigger</button>
-    <span data-testid="tail-in" data-icon="tail-in" class="_3nrYb"
+    <!-- <span data-testid="tail-in" data-icon="tail-in" class="_3nrYb"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 8 13"
@@ -34,9 +33,9 @@
           fill="currentColor"
           d="M5.188 0H0v11.193l6.467-8.625C7.526 1.156 6.958 0 5.188 0z"
         ></path></svg
-    ></span>
-    <span v-if="t" style="color: white"> a </span>
-    <ul v-for="(item, index) in allMessage" :key="index">
+    ></span> -->
+    <div v-if="ultest">
+      <ul v-for="(item, index) in allMessage" :key="index">
       <div v-if="item.msg != 'no msg'">
         <li v-if="item.sender == person1">
           <div class="owner">
@@ -64,6 +63,8 @@
         </li>
       </div>
     </ul>
+    </div>
+    
   </div>
 </template>
 
@@ -76,7 +77,7 @@ export default {
       file: "",
       lines: [],
       allMessage: {},
-      t: false,
+      ultest:false,
       person1: "harpreet",
       person2: "navneet",
     };
@@ -95,9 +96,6 @@ export default {
       };
       reader.onerror = (err) => console.log(err);
       reader.readAsText(this.file);
-    },
-    trigger() {
-      this.t = !this.t;
     },
     messageSender(line) {
       for (let index = 0; index < line.length; index++) {
@@ -130,8 +128,12 @@ export default {
           console.log("else =>" + element + " =>   " + index);
         }
       }
+      this.ultest=true;
       console.log(this.allMessage);
     },
+    popupShow(){
+      console.log(":aaaa");
+    }
   },
 };
 </script>
@@ -176,4 +178,5 @@ ul li {
 .datetime {
   text-align: end;
 }
+
 </style>
