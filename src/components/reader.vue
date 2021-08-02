@@ -37,30 +37,32 @@
     ></span>
     <span v-if="t" style="color: white"> a </span>
     <ul v-for="(item, index) in allMessage" :key="index">
-      <li v-if="item.sender == person1">
-        <div class="owner">
-          <div class="mainboxowner">
-            <div class="msgbox">
-              {{ item.msg }}
-            </div>
-            <div class="datetime">
-              <span>{{ item.time }}</span>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li v-else>
-        <div class="partner">
-          <div class="mainboxpartner">
-            <div class="msgbox">
-              {{ item.msg }}
-            </div>
-            <div class="datetime">
-              <span>{{ item.time }}</span>
+      <div v-if="item.msg != 'no msg'">
+        <li v-if="item.sender == person1">
+          <div class="owner">
+            <div class="mainboxowner">
+              <div class="msgbox">
+                {{ item.msg }}
+              </div>
+              <div class="datetime">
+                <span>{{ item.time }}</span>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
+        </li>
+        <li v-else>
+          <div class="partner">
+            <div class="mainboxpartner">
+              <div class="msgbox">
+                {{ item.msg }}
+              </div>
+              <div class="datetime">
+                <span>{{ item.time }}</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
     </ul>
   </div>
 </template>
