@@ -1,0 +1,40 @@
+.owner {
+    color: rgb(255, 255, 255);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 3%;
+}
+.partner {
+    color: rgb(124, 124, 209);
+    width: fit-content;
+    margin-left: 3%;
+}
+.mainboxowner {
+    background-color: coral;
+    text-align: right;
+    padding: 10px;
+    border: none;
+    border-radius: 11px;
+    border-top-right-radius: 0;
+}
+.mainboxpartner {
+    background-color: darkmagenta;
+    text-align: left;
+    padding: 10px;
+    border: none;
+    border-radius: 11px;
+    border-top-left-radius: 0;
+}
+ul {
+    padding-inline-start: 0;
+}
+ul li {
+    list-style-type: none;
+}
+.rigthtail {
+    color: black;
+}
+.datetime {
+    text-align: end;
+}
+

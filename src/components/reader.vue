@@ -1,6 +1,13 @@
 <template>
   <div>
-    <input type="file" ref="doc" id="doc" @change="onFileInput" />
+    <div v-if="hideForm">
+      <input type="file" ref="doc" id="doc" @change="onFileInput" />
+      <input type="text" v-model="person1" />
+      <input type="text" v-model="person2" />
+      <button @click="submitAll">ok</button>
+    </div>
+
+    <!-- <button @click="PrintPanel" v-if="!fileInput">PRINT</button> -->
     <!-- <span data-testid="tail-in" data-icon="tail-in" class="_3nrYb"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -35,36 +42,35 @@
         ></path></svg
     ></span> -->
     <div v-if="ultest">
-      <ul v-for="(item, index) in allMessage" :key="index">
-      <div v-if="item.msg != 'no msg'">
-        <li v-if="item.sender == person1">
-          <div class="owner">
-            <div class="mainboxowner">
-              <div class="msgbox">
-                {{ item.msg }}
-              </div>
-              <div class="datetime">
-                <span>{{ item.time }}</span>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li v-else>
-          <div class="partner">
-            <div class="mainboxpartner">
-              <div class="msgbox">
-                {{ item.msg }}
-              </div>
-              <div class="datetime">
-                <span>{{ item.time }}</span>
+      <ul v-for="(item, index) in allMessage" :key="index" id="printing">
+        <div v-if="item.msg != 'no msg'">
+          <li v-if="item.sender == person1">
+            <div class="owner">
+              <div class="mainboxowner">
+                <div class="msgbox">
+                  {{ item.msg }}
+                </div>
+                <div class="datetime">
+                  <span>{{ item.time }}</span>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
-      </div>
-    </ul>
+          </li>
+          <li v-else>
+            <div class="partner">
+              <div class="mainboxpartner">
+                <div class="msgbox">
+                  {{ item.msg }}
+                </div>
+                <div class="datetime">
+                  <span>{{ item.time }}</span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
     </div>
-    
   </div>
 </template>
 
@@ -77,12 +83,19 @@ export default {
       file: "",
       lines: [],
       allMessage: {},
-      ultest:false,
-      person1: "harpreet",
-      person2: "navneet",
+      ultest: false,
+      fileInput: true,
+      person1: "",
+      person2: "",
+      hideForm: true,
     };
   },
   methods: {
+    submitAll() {
+      if (this.person1 && this.person2) {
+        this.hideForm = false;
+      }
+    },
     onFileInput() {
       this.file = this.$refs.doc.files[0];
       const reader = new FileReader();
@@ -128,55 +141,13 @@ export default {
           console.log("else =>" + element + " =>   " + index);
         }
       }
-      this.ultest=true;
+      this.ultest = true;
+      this.fileInput = false;
       console.log(this.allMessage);
     },
-    popupShow(){
-      console.log(":aaaa");
-    }
   },
 };
 </script>
 
 <style>
-.owner {
-  color: rgb(255, 255, 255);
-  width: fit-content;
-  margin-left: auto;
-  margin-right: 3%;
-}
-.partner {
-  color: rgb(124, 124, 209);
-  width: fit-content;
-  margin-left: 3%;
-}
-.mainboxowner {
-  background-color: coral;
-  text-align: right;
-  padding: 10px;
-  border: none;
-  border-radius: 11px;
-  border-top-right-radius: 0;
-}
-.mainboxpartner {
-  background-color: darkmagenta;
-  text-align: left;
-  padding: 10px;
-  border: none;
-  border-radius: 11px;
-  border-top-left-radius: 0;
-}
-ul {
-  padding-inline-start: 0;
-}
-ul li {
-  list-style-type: none;
-}
-.rigthtail {
-  color: black;
-}
-.datetime {
-  text-align: end;
-}
-
 </style>
