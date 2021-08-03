@@ -3,7 +3,6 @@
     <div v-if="hideForm">
       <input type="file" ref="doc" id="doc" @change="onFileInput" />
       <input type="text" v-model="person1" />
-      <input type="text" v-model="person2" />
       <button @click="submitAll">ok</button>
     </div>
 
@@ -44,7 +43,7 @@
     <div v-if="ultest">
       <ul v-for="(item, index) in allMessage" :key="index" id="printing">
         <div v-if="item.msg != 'nan'">
-          <li v-if="item.sender == person1">
+          <li v-if="item.sender == person1.toLowerCase()">
             <div class="owner">
               <div class="mainboxowner">
                 <div class="msgbox">
@@ -86,13 +85,12 @@ export default {
       ultest: false,
       fileInput: true,
       person1: "",
-      person2: "",
       hideForm: true,
     };
   },
   methods: {
     submitAll() {
-      if (this.person1 && this.person2) {
+      if (this.person1) {
         this.hideForm = false;
       }
     },
@@ -104,6 +102,15 @@ export default {
         this.lines = this.file.split(/\r\n|\n/);
         //   this.content=lines.join('\r\n');
         this.content = this.lines;
+        for (let index = 0; index < this.content.length; index++) {
+          const element = this.content[index];
+          if (element.match(/[0-3][0-9]\/[0-1][0-9]\/\d{2,4},/)) {
+            var i = index;
+          } else {
+            this.content[i] = this.content[i] + " " + element;
+          }
+        }
+        console.log(this.content);
         this.messageSender(this.content);
       };
       reader.onerror = (err) => console.log(err);
@@ -120,30 +127,23 @@ export default {
         };
         const element = line[index];
         if (element.match(/[0-3][0-9]\/[0-1][0-9]\/\d{2,4},/)) {
-          debugger;
           var timeMsg = element.split(" - ");
           var dateTime = timeMsg[0].split(", ");
           if (dateTime[0] && dateTime[1]) {
-            var date = dateTime[0].trim();
-            var time = dateTime[1].trim();
+            message.date = dateTime[0].trim();
+            message.time = dateTime[1].trim();
           } else {
-            date = "nan";
-            time = "nan";
+            message.date = "nan";
+            message.time = "nan";
           }
           var senderMsg = timeMsg[1].split(": ");
           if (senderMsg[0] && senderMsg[1]) {
-            var sender = senderMsg[0].toLowerCase().trim();
-            var msg = senderMsg[1].trim();
+            message.sender = senderMsg[0].toLowerCase().trim();
+            message.msg = senderMsg[1].trim();
           } else {
-            sender = "nan";
-            msg = "nan";
+            message.sender = "nan";
+            message.msg = "nan";
           }
-
-          message.date = date;
-          message.time = time;
-          message.sender = sender;
-          message.msg = msg;
-
           this.allMessage[index] = message;
         } else {
           countelse++;
