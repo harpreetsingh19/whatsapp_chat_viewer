@@ -1,11 +1,14 @@
 <template>
   <div>
-    <div v-if="hideForm">
-      <input type="file" ref="doc" id="doc" @change="onFileInput" />
-      <input type="text" v-model="person1" />
-      <button @click="submitAll">ok</button>
-    </div>
-    
+    <Guide
+    v-if="!ultest"></Guide>
+    <b-button v-if="!ultest" class="start-button" @click="openInputPopup" variant="outline-success">START</b-button>
+    <InputPopup
+    v-if="openInputBox"
+    @input-file="onFileInput"
+    @name="ownerName"
+    @close="closeInputPopup"
+    ></InputPopup>
 
     <!-- <button @click="PrintPanel" v-if="!fileInput">PRINT</button> -->
     <!-- <span data-testid="tail-in" data-icon="tail-in" class="_3nrYb"
@@ -75,8 +78,13 @@
 </template>
 
 <script>
+import InputPopup from "@/components/inputPopup.vue"
+import Guide from "@/components/guide.vue"
 export default {
   name: "reader",
+  components:{
+    InputPopup,Guide
+  },
   data() {
     return {
       content: [],
@@ -87,16 +95,26 @@ export default {
       fileInput: true,
       person1: "",
       hideForm: true,
+      openInputBox:false
     };
   },
   methods: {
+    openInputPopup(){
+      this.openInputBox=true
+    },
+    ownerName(e){debugger
+      this.person1=e
+    },
+    closeInputPopup(e){
+      this.openInputBox=e
+    },
     submitAll() {
       if (this.person1) {
         this.hideForm = false;
       }
     },
-    onFileInput() {
-      this.file = this.$refs.doc.files[0];
+    onFileInput(e) {debugger
+      this.file = e;
       const reader = new FileReader();
       reader.onload = (res) => {
         this.file = res.target.result;

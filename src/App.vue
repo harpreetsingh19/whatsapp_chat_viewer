@@ -15,16 +15,17 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: sans-serif,Avenir, Helvetica, Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #ff0000;
   margin: 0;
   padding: 0;
-  background-image: url("./assets/adrien-olichon-ilVYjf0J378-unsplash.jpg");
+  /* background-image: url("./assets/adrien-olichon-ilVYjf0J378-unsplash.jpg");
   background-repeat: repeat-y;
-  background-size: auto;
+  background-size: auto; */
+  
 }
 
 

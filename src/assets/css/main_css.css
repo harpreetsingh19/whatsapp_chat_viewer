@@ -5,12 +5,12 @@
     margin-right: 3%;
 }
 .partner {
-    color: rgb(124, 124, 209);
+    color: rgb(255, 255, 255);
     width: fit-content;
     margin-left: 3%;
 }
 .mainboxowner {
-    background-color: coral;
+    background-color: #075E54;
     text-align: right;
     padding: 10px;
     border: none;
@@ -18,11 +18,11 @@
     border-top-right-radius: 0;
 }
 .mainboxpartner {
-    background-color: darkmagenta;
+    background-color: #242424;
     text-align: left;
     padding: 10px;
     border: none;
-    border-radius: 11px;
+    border-radius: 12px;
     border-top-left-radius: 0;
 }
 ul {
@@ -37,4 +37,38 @@ ul li {
 .datetime {
     text-align: end;
 }
+#printing{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 14px;
+}
+.start-button{
+    position: absolute;
+  top: 23px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+.heading-content{
+    color: black;
+    letter-spacing: 3px;
+}
+.col {
+    border: 1px solid rgb(192, 192, 192);
+}
 
+.note1{
+    margin-top: 2rem;
+    color: rgb(255, 87, 87);
+}
+.note2{
+    color: rgb(255, 0, 0);
+}
+.note3{
+    color: rgb(0, 0, 165);
+
+}
+h5{
+    letter-spacing: 3px;
+}
