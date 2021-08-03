@@ -17,6 +17,7 @@
       :secondPerson="personTwo"
       :senderAvailabe="senderAvail"
     ></InputPopup>
+    <!-- <b-button v-if="ultest" @click="nextRangedMsg">NEXT</b-button> -->
 
     <!-- <span data-testid="tail-in" data-icon="tail-in" class="_3nrYb"
       ><svg
@@ -106,6 +107,8 @@ export default {
       personOne: "",
       personTwo: "",
       senderAvail: true,
+      startIndex:1
+
     };
   },
   methods: {
@@ -188,6 +191,12 @@ export default {
       }
     },
   },
+  computed:{
+    // nextRangedMsg(){
+
+    //   return xyz
+    // }
+  }
 };
 </script>
 

@@ -97,7 +97,7 @@ h5 {
         max-width: 60%;
     }
     .modal-content {
-        max-width: 50%;
+        max-width: 100%;
         text-align: center;
     }
 }
