@@ -1,20 +1,25 @@
+html {
+    background-color: black;
+}
 .owner {
     color: rgb(255, 255, 255);
     width: fit-content;
+    max-width: 60%;
     margin-left: auto;
     margin-right: 3%;
 }
 .partner {
     color: rgb(255, 255, 255);
     width: fit-content;
+    max-width: 60%;
     margin-left: 3%;
 }
 .mainboxowner {
-    background-color: #075E54;
+    background-color: #075e54;
     text-align: right;
     padding: 10px;
     border: none;
-    border-radius: 11px;
+    border-radius: 12px;
     border-top-right-radius: 0;
 }
 .mainboxpartner {
@@ -36,39 +41,86 @@ ul li {
 }
 .datetime {
     text-align: end;
+    color: #bfbfbf;
+    font-size: 0.9rem;
 }
-#printing{
+#printing {
     background-color: black;
     margin: 0;
     padding: 0;
     padding-bottom: 14px;
 }
-.start-button{
+.start-button {
     position: absolute;
-  top: 23px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: black;
-}
-.heading-content{
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: black;
+}
+.heading-content {
+    color: rgb(255, 255, 255);
     letter-spacing: 3px;
 }
 .col {
     border: 1px solid rgb(192, 192, 192);
+    color: white;
 }
 
-.note1{
+.note1 {
     margin-top: 2rem;
     color: rgb(255, 87, 87);
 }
-.note2{
-    color: rgb(255, 0, 0);
+.note2 {
+    color: rgb(255, 89, 89);
+    font-variant: all-small-caps;
+    font-size: larger;
 }
-.note3{
-    color: rgb(0, 0, 165);
-
+.note3 {
+    color: rgb(107, 107, 207);
 }
-h5{
+h5 {
     letter-spacing: 3px;
+}
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .owner {
+        color: rgb(255, 255, 255);
+        width: fit-content;
+        margin-left: auto;
+        margin-right: 7%;
+        max-width: 60%;
+    }
+    .partner {
+        color: rgb(255, 255, 255);
+        width: fit-content;
+        margin-left: 7%;
+        max-width: 60%;
+    }
+    .modal-content {
+        max-width: 50%;
+        text-align: center;
+    }
+}
+
+@media print {
+    .partner {
+        color: rgb(255, 255, 255);
+        width: fit-content;
+        max-width: 60%;
+        margin-left: 3%;
+        font-size: xx-large;
+    }
+    .owner {
+        color: rgb(255, 255, 255);
+        width: fit-content;
+        max-width: 60%;
+        margin-left: auto;
+        margin-right: 3%;
+        font-size: xx-large;
+    }
+    .datetime {
+        text-align: end;
+        color: #bfbfbf;
+        font-size: 1.5rem;
+    }
 }

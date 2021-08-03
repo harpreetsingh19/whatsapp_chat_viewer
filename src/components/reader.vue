@@ -1,16 +1,23 @@
 <template>
   <div>
-    <Guide
-    v-if="!ultest"></Guide>
-    <b-button v-if="!ultest" class="start-button" @click="openInputPopup" variant="outline-success">START</b-button>
+    <Guide v-if="!ultest"></Guide>
+    <b-button
+      v-if="!ultest"
+      class="start-button"
+      @click="openInputPopup"
+      variant="outline-success"
+      >START</b-button
+    >
     <InputPopup
-    v-if="openInputBox"
-    @input-file="onFileInput"
-    @name="ownerName"
-    @close="closeInputPopup"
+      v-if="openInputBox"
+      @input-file="onFileInput"
+      @name="ownerName"
+      @close="closeInputPopup"
+      :firstPerson="personOne"
+      :secondPerson="personTwo"
+      :senderAvailabe="senderAvail"
     ></InputPopup>
 
-    <!-- <button @click="PrintPanel" v-if="!fileInput">PRINT</button> -->
     <!-- <span data-testid="tail-in" data-icon="tail-in" class="_3nrYb"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -78,12 +85,13 @@
 </template>
 
 <script>
-import InputPopup from "@/components/inputPopup.vue"
-import Guide from "@/components/guide.vue"
+import InputPopup from "@/components/inputPopup.vue";
+import Guide from "@/components/guide.vue";
 export default {
   name: "reader",
-  components:{
-    InputPopup,Guide
+  components: {
+    InputPopup,
+    Guide,
   },
   data() {
     return {
@@ -92,28 +100,31 @@ export default {
       lines: [],
       allMessage: {},
       ultest: false,
-      fileInput: true,
       person1: "",
       hideForm: true,
-      openInputBox:false
+      openInputBox: false,
+      personOne: "",
+      personTwo: "",
+      senderAvail: true,
     };
   },
   methods: {
-    openInputPopup(){
-      this.openInputBox=true
+    openInputPopup() {
+      this.openInputBox = true;
     },
-    ownerName(e){debugger
-      this.person1=e
+    ownerName(e) {
+      this.person1 = e;
+      this.ultest = true;
     },
-    closeInputPopup(e){
-      this.openInputBox=e
+    closeInputPopup(e) {
+      this.openInputBox = e;
     },
     submitAll() {
       if (this.person1) {
         this.hideForm = false;
       }
     },
-    onFileInput(e) {debugger
+    onFileInput(e) {
       this.file = e;
       const reader = new FileReader();
       reader.onload = (res) => {
@@ -129,7 +140,6 @@ export default {
             this.content[i] = this.content[i] + " " + element;
           }
         }
-        console.log(this.content);
         this.messageSender(this.content);
       };
       reader.onerror = (err) => console.log(err);
@@ -157,6 +167,12 @@ export default {
           var senderMsg = timeMsg[1].split(": ");
           if (senderMsg[0] && senderMsg[1]) {
             message.sender = senderMsg[0].toLowerCase().trim();
+            if (this.personOne == "") {
+              this.personOne = message.sender;
+            }
+            if (message.sender != this.personOne) {
+              this.personTwo = message.sender;
+            }
             message.msg = senderMsg[1].trim();
           } else {
             message.sender = "nan";
@@ -167,8 +183,9 @@ export default {
           //countelse++;
         }
       }
-      this.ultest = true;
-      this.fileInput = false;
+      if (this.personOne && this.personTwo) {
+        this.senderAvail = false;
+      }
     },
   },
 };
