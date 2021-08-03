@@ -5,6 +5,7 @@
       <input type="text" v-model="person1" />
       <button @click="submitAll">ok</button>
     </div>
+    
 
     <!-- <button @click="PrintPanel" v-if="!fileInput">PRINT</button> -->
     <!-- <span data-testid="tail-in" data-icon="tail-in" class="_3nrYb"
@@ -117,7 +118,6 @@ export default {
       reader.readAsText(this.file);
     },
     messageSender(line) {
-      var countelse = 0;
       for (let index = 0; index < line.length; index++) {
         const message = {
           date: "",
@@ -146,13 +146,11 @@ export default {
           }
           this.allMessage[index] = message;
         } else {
-          countelse++;
-          console.log(element);
+          //countelse++;
         }
       }
       this.ultest = true;
       this.fileInput = false;
-      console.log(countelse);
     },
   },
 };
