@@ -5,7 +5,7 @@
       v-if="!ultest"
       class="start-button"
       @click="openInputPopup"
-      variant="outline-success"
+      variant="success"
       >START</b-button
     >
     <InputPopup

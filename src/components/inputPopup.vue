@@ -3,6 +3,7 @@
     <b-modal
       ref="inputBox"
       @ok="submit"
+      :ok-disabled="popupOk"
       @hidden="closePopup"
       title="Give Input"
       :no-close-on-backdrop="true"
@@ -65,5 +66,10 @@ export default {
   mounted() {
     this.$refs.inputBox.show();
   },
+  computed:{
+    popupOk(){
+      return this.person!=""?false :true;
+    }
+  }
 };
 </script>
