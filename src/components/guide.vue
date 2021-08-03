@@ -19,12 +19,12 @@
         <h5>How</h5>
         <ol>
           <li>Export your chat in text format.</li>
-          <li>click on the above <b>START</b> button.</li>
+          <li>Click on the above <b>START</b> button.</li>
           <li>Attach your file.</li>
           <li>Choose your name from drop-down in that popup.</li>
         </ol>
       </b-col>
-      <b-col>
+      <!-- <b-col>
           <h5>Print</h5>
           <ul>
               <li>
@@ -33,7 +33,7 @@
               <li>There will be a button <strong>NEXT</strong> to go to next page. </li>
               <li>When you want to save your whole chat in <i>PDF</i> format click on <strong>PRINT</strong> button and then "CTRL+P" </li>
           </ul>
-      </b-col>
+      </b-col> -->
     </b-row>
     <p class="note1">Note:- Whats-app's limit to export chat as text format in 40,000 messages</p>
     <p class="note2">So if your text file is having that much message print (Ctrl+P) will take its time to load all the pages</p>
