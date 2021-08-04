@@ -17,9 +17,8 @@
       :secondPerson="personTwo"
       :senderAvailabe="senderAvail"
     ></InputPopup>
-    <div class="next-previous">
+    <div class="next-previous" v-if="ultest">
       <b-button
-        v-if="ultest"
         @click="previousRangedMsg"
         :disabled="pageNumber == 0"
         size="sm"

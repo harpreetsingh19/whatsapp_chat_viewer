@@ -113,7 +113,7 @@ h5 {
     }
     .guides {
         position: absolute;
-        top: 404px;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: black;
