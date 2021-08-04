@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     fileValue() {
-      debugger;
       if (this.$refs.doc.files[0].type == "text/plain") {
         this.$emit("input-file", this.$refs.doc.files[0]);
         this.warningMsg = "";

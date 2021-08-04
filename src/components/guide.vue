@@ -36,7 +36,7 @@
       </b-col> -->
     </b-row>
     <p class="note1">
-      Note:- Whats-app's limit to export chat as text format in 40,000 messages
+      Note:- Whats-app's limit to export chat as text format is 40,000 messages
     </p>
     <p class="note2">
       So if your text file is having that much message print (Ctrl+P) will take

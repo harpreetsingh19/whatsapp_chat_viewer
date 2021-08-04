@@ -121,14 +121,17 @@ h5 {
     .next-previous {
         position: fixed;
         top: 0;
-        margin-bottom: 10px;
-        width: 100%;
-        left: 41%;
-        transform: translate(-50%, 3%);
+        display: contents;
     }
     .btn-sm,
     .btn-group-sm > .btn {
         line-height: 0.9rem;
+    }
+    .previous {
+        justify-content: end;
+    }
+    .next {
+        justify-content: start;
     }
 }
 

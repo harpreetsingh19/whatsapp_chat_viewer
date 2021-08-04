@@ -24,6 +24,7 @@
         :disabled="pageNumber == 0"
         size="sm"
         variant="info"
+        class="next"
         >Previous</b-button
       >&nbsp;&nbsp;&nbsp;
       <b-button
@@ -32,6 +33,7 @@
         :disabled="pageNumber >= pageCount - 1"
         size="sm"
         variant="primary"
+        class="previous"
         >Next</b-button
       >
     </div>
@@ -71,31 +73,33 @@
     ></span> -->
     <div v-if="ultest">
       <ul v-for="(item, index) in paginatedData" :key="index" id="printing">
-        <div v-if="item.msg != 'nan'">
-          <li v-if="item.sender == person1.toLowerCase()">
-            <div class="owner">
-              <div class="mainboxowner">
-                <div class="msgbox">
-                  {{ item.msg }}
-                </div>
-                <div class="datetime">
-                  <span>{{ item.time }}</span>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li v-else>
-            <div class="partner">
-              <div class="mainboxpartner">
-                <div class="msgbox">
-                  {{ item.msg }}
-                </div>
-                <div class="datetime">
-                  <span>{{ item.time }}</span>
+        <div v-if="item">
+          <div v-if="item.msg != 'nan'">
+            <li v-if="item.sender == person1.toLowerCase()">
+              <div class="owner">
+                <div class="mainboxowner">
+                  <div class="msgbox">
+                    {{ item.msg }}
+                  </div>
+                  <div class="datetime">
+                    <span>{{ item.time }}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
+            </li>
+            <li v-else>
+              <div class="partner">
+                <div class="mainboxpartner">
+                  <div class="msgbox">
+                    {{ item.msg }}
+                  </div>
+                  <div class="datetime">
+                    <span>{{ item.time }}</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </div>
         </div>
       </ul>
     </div>
@@ -125,7 +129,7 @@ export default {
       personTwo: "",
       senderAvail: true,
       pageNumber: 0,
-      size: 138,
+      size: 100,
       modifiedChat: [],
     };
   },
@@ -161,6 +165,7 @@ export default {
         this.content = this.lines;
         for (let index = 0; index < this.content.length; index++) {
           var element = this.content[index];
+          debugger;
           if (element.match(/[0-3][0-9]\/[0-1][0-9]\/\d{2,4},/)) {
             var timeMsg = element.split(": ");
           } else {
@@ -174,7 +179,6 @@ export default {
       reader.readAsText(this.file);
     },
     messageSender(line) {
-      debugger;
       for (let index = 0; index < line.length; index++) {
         const message = {
           date: "",
@@ -232,6 +236,7 @@ export default {
         element[i] = this.allMessage[index];
         i++;
       }
+      console.log(element);
       return element;
     },
   },
