@@ -24,30 +24,44 @@
           <li>Choose your name from drop-down in that popup.</li>
         </ol>
       </b-col>
-      <!-- <b-col>
-          <h5>Print</h5>
+      <b-col>
+          <h5>Navigation</h5>
           <ul>
               <li>
                   This site will load your message in parts.
               </li>
-              <li>There will be a button <strong>NEXT</strong> to go to next page. </li>
-              <li>When you want to save your whole chat in <i>PDF</i> format click on <strong>PRINT</strong> button and then "CTRL+P" </li>
+              <li>There will be <strong>NEXT</strong> & <strong>PREVIOUS</strong> button for navigation. </li>
           </ul>
-      </b-col> -->
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <h5>Pros</h5>
+          <ul>
+              <li>
+                  This site process every data in your browser.That means we don't save your files in any server.
+              </li>
+              <li>Your data is SAFE</li>
+          </ul>
+      </b-col>
+      <b-col>
+        <h5>Cons</h5>
+          <ul>
+              <li>
+                  As we process every data in browser.Sometimes there will be a lag/delay in response.
+              </li>
+              <li>But trust me you won't notice it.</li>
+          </ul>
+      </b-col>
     </b-row>
     <p class="note1">
-      Note:- Whats-app's limit to export chat as text format is 40,000 messages
+      Note:- For now this site is not applicable for <em>group chats</em> .
     </p>
-    <p class="note2">
-      So if your text file is having that much message print (Ctrl+P) will take
-      its time to load all the pages
-    </p>
-    <p class="note3">Be Patient</p>
     <br />
-    <span class="feedback">Feel free to give</span> &nbsp;
+    <span class="feedback">Feel free to give</span>
     <a
       href="mailto:singhh.harpreet19@gmail.com?subject = Feedback about whatsapp chat viewer & body = Bug/Problem:-"
-      >Feedback</a
+      > Feedback</a
     >
   </b-container>
 </template>
