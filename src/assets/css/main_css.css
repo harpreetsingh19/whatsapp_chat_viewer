@@ -48,7 +48,7 @@ ul li {
     background-color: black;
     margin: 0;
     padding: 0;
-    padding-bottom: 14px;
+    padding-top: 14px;
 }
 .start-button {
     position: absolute;
@@ -80,7 +80,19 @@ ul li {
 h5 {
     letter-spacing: 3px;
 }
-@media only screen and (max-width: 768px) {
+.next-previous {
+    position: fixed;
+    top: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.btn {
+    line-height: 1.2rem;
+}
+.warn {
+    color: red;
+}
+@media only screen and (max-width: 800px) {
     /* For mobile phones: */
     .owner {
         color: rgb(255, 255, 255);
@@ -98,6 +110,25 @@ h5 {
     .modal-content {
         max-width: 100%;
         text-align: center;
+    }
+    .guides {
+        position: absolute;
+        top: 404px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+    }
+    .next-previous {
+        position: fixed;
+        top: 0;
+        margin-bottom: 10px;
+        width: 100%;
+        left: 41%;
+        transform: translate(-50%, 3%);
+    }
+    .btn-sm,
+    .btn-group-sm > .btn {
+        line-height: 0.9rem;
     }
 }
 
@@ -121,5 +152,8 @@ h5 {
         text-align: end;
         color: #bfbfbf;
         font-size: 1.5rem;
+    }
+    .next-previous {
+        opacity: 0;
     }
 }

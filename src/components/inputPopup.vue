@@ -10,14 +10,16 @@
       :no-close-on-esc="true"
       centered
     >
-      <input type="file" ref="doc" id="doc" @change="fileValue" />
+      <input type="file" ref="doc" id="doc" @change="fileValue" /> <br />
+      <div v-if="warningMsg !== ''" class="warn">{{ warningMsg }}</div>
+      <br />
       <b-dropdown
         id="dropdown-dropright"
         dropright
         text="Your Name"
         variant="primary"
         class="m-2"
-        :disabled="senderAvailabe"
+        :disabled="warning || senderAvailabe"
       >
         <b-dropdown-item
           :value="firstPerson"
@@ -47,11 +49,21 @@ export default {
   data() {
     return {
       person: "",
+      warningMsg: "",
+      warning: false,
     };
   },
   methods: {
     fileValue() {
-      this.$emit("input-file", this.$refs.doc.files[0]);
+      debugger;
+      if (this.$refs.doc.files[0].type == "text/plain") {
+        this.$emit("input-file", this.$refs.doc.files[0]);
+        this.warningMsg = "";
+        this.warning = false;
+      } else {
+        this.warningMsg = "Please Select text file";
+        this.warning = true;
+      }
     },
     submit() {
       this.$emit("input-file", this.$refs.doc.files[0]);
@@ -60,16 +72,16 @@ export default {
     },
     closePopup() {
       this.$emit("close", false);
-      this.$refs.inputBox.hile();
+      this.$refs.inputBox.hide();
     },
   },
   mounted() {
     this.$refs.inputBox.show();
   },
-  computed:{
-    popupOk(){
-      return this.person!=""?false :true;
-    }
-  }
+  computed: {
+    popupOk() {
+      return this.person != "" ? false : true;
+    },
+  },
 };
 </script>

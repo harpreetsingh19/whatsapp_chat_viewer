@@ -17,7 +17,24 @@
       :secondPerson="personTwo"
       :senderAvailabe="senderAvail"
     ></InputPopup>
-    <!-- <b-button v-if="ultest" @click="nextRangedMsg">NEXT</b-button> -->
+    <div class="next-previous">
+      <b-button
+        v-if="ultest"
+        @click="previousRangedMsg"
+        :disabled="pageNumber == 0"
+        size="sm"
+        variant="info"
+        >Previous</b-button
+      >&nbsp;&nbsp;&nbsp;
+      <b-button
+        v-if="ultest"
+        @click="nextRangedMsg"
+        :disabled="pageNumber >= pageCount - 1"
+        size="sm"
+        variant="primary"
+        >Next</b-button
+      >
+    </div>
 
     <!-- <span data-testid="tail-in" data-icon="tail-in" class="_3nrYb"
       ><svg
@@ -53,7 +70,7 @@
         ></path></svg
     ></span> -->
     <div v-if="ultest">
-      <ul v-for="(item, index) in allMessage" :key="index" id="printing">
+      <ul v-for="(item, index) in paginatedData" :key="index" id="printing">
         <div v-if="item.msg != 'nan'">
           <li v-if="item.sender == person1.toLowerCase()">
             <div class="owner">
@@ -107,11 +124,18 @@ export default {
       personOne: "",
       personTwo: "",
       senderAvail: true,
-      startIndex:1
-
+      pageNumber: 0,
+      size: 138,
+      modifiedChat: [],
     };
   },
   methods: {
+    nextRangedMsg() {
+      this.pageNumber++;
+    },
+    previousRangedMsg() {
+      this.pageNumber--;
+    },
     openInputPopup() {
       this.openInputBox = true;
     },
@@ -136,19 +160,21 @@ export default {
         //   this.content=lines.join('\r\n');
         this.content = this.lines;
         for (let index = 0; index < this.content.length; index++) {
-          const element = this.content[index];
+          var element = this.content[index];
           if (element.match(/[0-3][0-9]\/[0-1][0-9]\/\d{2,4},/)) {
-            var i = index;
+            var timeMsg = element.split(": ");
           } else {
-            this.content[i] = this.content[i] + " " + element;
+            element = timeMsg[0] + ": " + element;
           }
+          this.modifiedChat.push(element);
         }
-        this.messageSender(this.content);
+        this.messageSender(this.modifiedChat);
       };
       reader.onerror = (err) => console.log(err);
       reader.readAsText(this.file);
     },
     messageSender(line) {
+      debugger;
       for (let index = 0; index < line.length; index++) {
         const message = {
           date: "",
@@ -191,12 +217,24 @@ export default {
       }
     },
   },
-  computed:{
-    // nextRangedMsg(){
-
-    //   return xyz
-    // }
-  }
+  computed: {
+    pageCount() {
+      let l = this.allMessage.length,
+        s = this.size;
+      return Math.ceil(l / s);
+    },
+    paginatedData() {
+      const start = this.pageNumber * this.size,
+        end = start + this.size;
+      var element = {};
+      var i = 0;
+      for (let index = start; index <= end; index++) {
+        element[i] = this.allMessage[index];
+        i++;
+      }
+      return element;
+    },
+  },
 };
 </script>
 

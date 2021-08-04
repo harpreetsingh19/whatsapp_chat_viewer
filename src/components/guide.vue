@@ -35,11 +35,20 @@
           </ul>
       </b-col> -->
     </b-row>
-    <p class="note1">Note:- Whats-app's limit to export chat as text format in 40,000 messages</p>
-    <p class="note2">So if your text file is having that much message print (Ctrl+P) will take its time to load all the pages</p>
-    <p class="note3"> Be Patient</p>
-    <br>
-    <span class="feedback">Feel free to give</span> &nbsp; <a href = "mailto:singhh.harpreet19@gmail.com?subject = Feedback about whatsapp chat viewer & body = Bug/Problem:-">Feedback</a>
+    <p class="note1">
+      Note:- Whats-app's limit to export chat as text format in 40,000 messages
+    </p>
+    <p class="note2">
+      So if your text file is having that much message print (Ctrl+P) will take
+      its time to load all the pages
+    </p>
+    <p class="note3">Be Patient</p>
+    <br />
+    <span class="feedback">Feel free to give</span> &nbsp;
+    <a
+      href="mailto:singhh.harpreet19@gmail.com?subject = Feedback about whatsapp chat viewer & body = Bug/Problem:-"
+      >Feedback</a
+    >
   </b-container>
 </template>
 
@@ -50,20 +59,20 @@ export default {
 </script>
 
 <style>
-.feedback{
+.feedback {
   color: white;
 }
 .guides {
   position: absolute;
-  top: 50%;
+  top: 300px;
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
 }
-i{
+i {
   color: rgb(255, 255, 255);
 }
-a{
+a {
   color: green;
 }
 </style>
