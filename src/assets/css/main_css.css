@@ -92,6 +92,13 @@ h5 {
 .warn {
     color: red;
 }
+.guides {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }
 @media only screen and (max-width: 800px) {
     /* For mobile phones: */
     .owner {
@@ -133,6 +140,13 @@ h5 {
     .next {
         justify-content: start;
     }
+    .guides {
+        position: absolute;
+        top: 500px;
+        left: 50%;
+        transform: translate(-50%, -416px);
+        color: black;
+      }
 }
 
 @media print {
