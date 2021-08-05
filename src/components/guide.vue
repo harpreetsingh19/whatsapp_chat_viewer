@@ -24,7 +24,7 @@
           <li>Choose your name from drop-down in that popup.</li>
         </ol>
       </b-col>
-      <b-col>
+      <!-- <b-col>
           <h5>Navigation</h5>
           <ul>
               <li>
@@ -32,7 +32,7 @@
               </li>
               <li>There will be <strong>NEXT</strong> & <strong>PREVIOUS</strong> button for navigation. </li>
           </ul>
-      </b-col>
+      </b-col> -->
     </b-row>
     <b-row>
       <b-col>
