@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-modal
+    <!-- <b-modal
       v-if="!viewContent"
       ref="verify"
       @ok="submit"
@@ -18,7 +18,7 @@
 </svg>
 &nbsp;
       <input placeholder="Type admin" type="password" v-model="pass"  @mouseleave="validate"/>
-    </b-modal>
+    </b-modal> -->
     <reader v-if="viewContent"></reader>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       pass: "",
-      viewContent: false,
+      viewContent: true,
       popupOk: true,
     };
   },
