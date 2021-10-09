@@ -50,11 +50,11 @@ export default {
       }
     },
     closePopup() {
-      this.$refs.verify.hide();
+      //this.$refs.verify.hide();
     },
   },
   mounted() {
-    this.$refs.verify.show();
+    //this.$refs.verify.show();
   },
 };
 </script>
