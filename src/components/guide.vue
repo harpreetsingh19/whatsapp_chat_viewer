@@ -50,7 +50,6 @@
               <li>
                   As we process every data in browser.Sometimes there will be a lag/delay in response.
               </li>
-              <li>But trust me you won't notice it.</li>
           </ul>
       </b-col>
     </b-row>
